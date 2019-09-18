@@ -4,7 +4,11 @@
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley",
-  "keywords": [ "widget", "utils", "library" ],
+  "keywords": [
+    "widget",
+    "utils",
+    "library"
+  ],
   "author": "NovaHaus",
   "license": "MIT",
   "scripts": {
