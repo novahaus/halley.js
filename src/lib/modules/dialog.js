@@ -14,8 +14,8 @@ function makeDialog(selector, opts) {
   function close() {
     document.body.style.overflow = '';
 
-    elm.classList.remove('data-out');
-    elm.classList.add('data-active');
+    elm.classList.add('data-out');
+    elm.classList.remove('data-active');
 
 
     if (options.onClose) options.onClose();

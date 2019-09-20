@@ -1,23 +1,22 @@
 import YtTracking from  './youtube-tracker';
 import embedYouTubeApi from '../../utils/embed-youtube-api';
 
-let optin = {
-  automaticPlay: Boolean,
-  id: String,
-  onClick: Function,
-  onClose: Function,
-  onPlayVideo: Function,
-  onStateChange: Function,
-  playerVars: {},
-  onTracking: {
-    callback: Function,
-    trackings: ['10p']
-  }
-}
+// let optin = {
+//   automaticPlay: Boolean,
+//   id: String,
+//   onClose: Function,
+//   onPlayVideo: Function,
+//   onStateChange: Function,
+//   playerVars: {},
+//   onTracking: {
+//     callback: Function,
+//     trackings: ['10p']
+//   }
+// }
 
-function makeVideo(holder, opt) {
-  const holder = (typeof holder === 'string') ? document.querySelector(holder) : holder;
-  const options = opt;
+async function makeVideo(holder, opt) {
+  const content = (typeof holder === 'string') ? document.querySelector(holder) : holder;
+  const options = opt || {};
   let istanceVideo = null;
   let elm = null;
 
@@ -33,9 +32,8 @@ function makeVideo(holder, opt) {
 
   function playVideo(event) {
     const evt = event;
-    evt.target.playVideo();
 
-    if (options.onPlayVideo) options.onPlayVideo();
+    if (options.onPlayVideo) options.onPlay();
     if (options.onTracking) {
       evt.target.tracking = new YtTracking(evt.target, {
         trackings: options.onTracking.trackings,
@@ -46,13 +44,15 @@ function makeVideo(holder, opt) {
 
   function createVideo() {
     istanceVideo = new YT.Player(elm, {
-      videoId: id,
+      videoId: options.id,
       playerVars: options.playerVars,
       events: {
         onReady: event => playVideo(event),
         onStateChange: event => onStateChange(event)
       },
     })
+
+    console.log(istanceVideo);
   }
 
   function close() {
@@ -63,33 +63,39 @@ function makeVideo(holder, opt) {
     istanceVideo = null;
   }
 
-  function open() {
-    createElm();
-    createVideo();
-
-    if (options.onClick) options.onClick();
+  function play() {
+    istanceVideo.playVideo();
   }
 
   function createElm() {
-    holder.innerHTML = '';
+    content.innerHTML = '';
     elm = document.createElement('div');
-    holder.appendChild(elm);
+    content.appendChild(elm);
   }
 
-  function setup() {
-    if (options.automaticPlay) openVideo();
+  function create() {
+    createElm();
+    createVideo();
+
+    if (options.automaticPlay) play();
   }
 
   function init() {
-    embedYouTubeApi.init(setup);
+    return new Promise((resolve, reject) => {
+      embedYouTubeApi.init(create);
+      resolve();
+    })
   }
 
-  init()
+  await init();
 
   return {
-    open,
-    close
-  }
+    istanceVideo,
+    create,
+    play,
+    close,
+  };
+
 }
 
 export default {
