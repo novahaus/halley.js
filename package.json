@@ -1,5 +1,5 @@
 {
-  "name": "halley",
+  "name": "halley.js",
   "version": "0.1.1",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
@@ -27,7 +27,7 @@
     "babel-preset-env": "^1.7.0",
     "cross-origin": "^1.0.6",
     "generate-export-aliases": "^1.1.0",
-    "rollup": "^0.66.6",
+    "rollup": "^1.21.4",
     "rollup-plugin-babel": "3",
     "rollup-plugin-babel-minify": "^6.1.1",
     "rollup-plugin-commonjs": "^9.2.0",

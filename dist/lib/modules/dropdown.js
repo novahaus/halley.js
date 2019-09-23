@@ -1,0 +1,1 @@
+'use strict';function makeDropdown(){const a="string"==typeof selector?document.querySelector(selector):selector,b=a.querySelector("[data-dropdown-select]"),c=a.querySelector("[data-dropdown-label]");(function(){b.addEventListener("change",()=>{c.innerHTML=b.options[b.selectedIndex].innerHTML})})()}var makeDropdown$1={init:makeDropdown};module.exports=makeDropdown$1;
