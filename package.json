@@ -36,6 +36,7 @@
     "rollup-plugin-uglify": "^6.0.0"
   },
   "dependencies": {
-    "flickity": "^2.2.1"
+    "flickity": "^2.2.1",
+    "pubsub": "^3.2.1"
   }
 }

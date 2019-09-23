@@ -1,23 +1,37 @@
 import babel from 'rollup-plugin-babel';
 import minify from 'rollup-plugin-babel-minify';
-// import multiInput from 'rollup-plugin-multi-input';
-import scss from 'rollup-plugin-scss'
+// import scss from 'rollup-plugin-scss'
 
 const babelConfig = { exclude: 'node_modules/**' };
 const minifyConfig = { comments: false };
 
 export default [
   {
-    input: ['src/lib/**/*.js', 'src/utils/**/*.js'],
+    input: 'src/lib/app.js',
     output: {
-      dir: 'dist',
+      name: 'index',
+      file: 'dist/lib/index.min.js',
       format: 'umd',
+      exports: 'named'
     },
     interop: false,
     plugins: [
       babel(babelConfig),
-      minify(minifyConfig),
-      // multiInput(),
+      minify(minifyConfig)
+    ],
+  },
+  {
+    input: 'src/utils/app.js',
+    output: {
+      name: 'index',
+      file: 'dist/utils/index.min.js',
+      format: 'umd',
+      exports: 'named'
+    },
+    interop: false,
+    plugins: [
+      babel(babelConfig),
+      minify(minifyConfig)
     ],
   },
 
