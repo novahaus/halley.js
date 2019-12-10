@@ -1,0 +1,30 @@
+.halley_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.halley_modal.active {
+  transform: scaleX(1);
+}
+.halley_modal.active .halley_modal_overlay {
+  opacity: 1;
+}
+.halley_modal_overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 0;
+  transition: opacity 0.2s 0.2s ease;
+  z-index: -1;
+}

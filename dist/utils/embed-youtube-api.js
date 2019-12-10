@@ -1,1 +1,0 @@
-'use strict';function embedApi(){const a=document.createElement("script");a.src="https://www.youtube.com/iframe_api";const b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}var embedYouTubeApi={init(a){window.onYouTubeIframeAPIReady=()=>a(),embedApi()}};module.exports=embedYouTubeApi;
