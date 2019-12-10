@@ -1,6 +1,6 @@
 {
   "name": "halley.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley",
@@ -20,9 +20,7 @@
       "pre-commit": "npm run build"
     }
   },
-  "dependencies": {
-    "axios": "^0.19.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "husky": "^3.1.0",
     "lerna": "^3.18.3"
