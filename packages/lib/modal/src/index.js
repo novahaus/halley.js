@@ -75,7 +75,5 @@ export default (selector, opt) => {
 
 export const init = (selector, opt) => {
   const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector))
-  const instances = [];
-
-  data.forEach(elm => instances.push(modal(elm, opt)));
+  return data.map(elm => modal(elm, opt));
 }

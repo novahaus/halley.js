@@ -1,0 +1,23 @@
+.halley-fake-select {
+  position: relative;
+  z-index: 1;
+}
+.halley-fake-select_span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 8px 24px;
+  width: 100%;
+}
+.halley-fake-select_select {
+  font-size: 16px;
+  background-color: #fff;
+  padding: 8px 14px;
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

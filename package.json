@@ -1,6 +1,6 @@
 {
   "name": "halley.js",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley",
@@ -12,8 +12,9 @@
   "author": "NovaHaus",
   "license": "MIT",
   "scripts": {
-    "build": "./build.sh",
-    "install": "./install.sh"
+    "build": "./bin/build.sh",
+    "install": "./bin/install.sh",
+    "np": "./bin/new-component.sh"
   },
   "husky": {
     "hooks": {

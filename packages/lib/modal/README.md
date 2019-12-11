@@ -17,7 +17,7 @@ modal('#my-modal'); // Here you can pass an element or a selector
 ```ES6
   import { init } from 'halley.js/packages/lib/modal';
 
-  init('.my-modals'); // Here you can pass an element or an array of elements
+  init('.my-modals'); // Here you can pass an selector or an array of elements
 ```
 
 ### CSS
