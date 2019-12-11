@@ -149,7 +149,7 @@ import babel from 'rollup-plugin-babel';
 import minify from 'rollup-plugin-babel-minify';
 import stylus  from 'rollup-plugin-stylus-compiler';
 import css from 'rollup-plugin-css-only';
-import { eslint } from "rollup-plugin-eslint";
+import { eslint } from 'rollup-plugin-eslint';
 
 const babelConfig = { exclude: 'node_modules/**' };
 const minifyConfig = { comments: false };
