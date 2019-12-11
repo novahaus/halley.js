@@ -4,34 +4,64 @@ cd ./packages/lib
 mkdir $1
 cd $1
 
-echo '
-{
-  "name": "'$1'.js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.min.js",
-  "scripts": {
-    "build": "./node_modules/.bin/rollup -c"
-  },
-  "author": "'$2'",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "babel-core": "6",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
-    "cross-origin": "^1.0.6",
-    "eslint-plugin-import": "^2.19.1",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel": "3",
-    "rollup-plugin-babel-minify": "^6.1.1",
-    "rollup-plugin-css-only": "^1.0.0",
-    "rollup-plugin-eslint": "^7.0.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "rollup-plugin-stylus-compiler": "^1.0.1"
-  }
-}
-' > package.json
+if [ -n "$3" ]
+then
+  echo '
+    {
+      "name": "'$1'.js",
+      "version": "1.0.0",
+      "description": "",
+      "main": "dist/index.min.js",
+      "scripts": {
+        "build": "./node_modules/.bin/rollup -c"
+      },
+      "author": "'$2'",
+      "license": "MIT",
+      "dependencies": {},
+      "devDependencies": {
+        "babel-core": "6",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.7.0",
+        "cross-origin": "^1.0.6",
+        "eslint-plugin-import": "^2.19.1",
+        "rollup": "^0.66.6",
+        "rollup-plugin-babel": "3",
+        "rollup-plugin-babel-minify": "^6.1.1",
+        "rollup-plugin-css-only": "^1.0.0",
+        "rollup-plugin-eslint": "^7.0.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "rollup-plugin-stylus-compiler": "^1.0.1"
+      }
+    }
+    ' > package.json
+else
+  echo '
+    {
+      "name": "'$1'.js",
+      "version": "1.0.0",
+      "description": "",
+      "main": "dist/index.min.js",
+      "scripts": {
+        "build": "./node_modules/.bin/rollup -c"
+      },
+      "author": "'$2'",
+      "license": "MIT",
+      "dependencies": {},
+      "devDependencies": {
+        "babel-core": "6",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.7.0",
+        "cross-origin": "^1.0.6",
+        "eslint-plugin-import": "^2.19.1",
+        "rollup": "^0.66.6",
+        "rollup-plugin-babel": "3",
+        "rollup-plugin-babel-minify": "^6.1.1",
+        "rollup-plugin-eslint": "^7.0.0",
+        "eslint-config-airbnb": "^18.0.1"
+      }
+    }
+    ' > package.json
+fi
 
 echo "
 # Logs
@@ -144,44 +174,73 @@ echo "
 };
 " > .eslintrc.js
 
-echo "
-import babel from 'rollup-plugin-babel';
-import minify from 'rollup-plugin-babel-minify';
-import stylus  from 'rollup-plugin-stylus-compiler';
-import css from 'rollup-plugin-css-only';
-import { eslint } from 'rollup-plugin-eslint';
+if [ -n "$3" ]
+then
+  echo "
+    import babel from 'rollup-plugin-babel';
+    import minify from 'rollup-plugin-babel-minify';
+    import stylus  from 'rollup-plugin-stylus-compiler';
+    import css from 'rollup-plugin-css-only';
+    import { eslint } from 'rollup-plugin-eslint';
 
-const babelConfig = { exclude: 'node_modules/**' };
-const minifyConfig = { comments: false };
+    const babelConfig = { exclude: 'node_modules/**' };
+    const minifyConfig = { comments: false };
 
-export default [
-  {
-    input: 'src/index.js',
-    output: {
-      name: 'index',
-      file: 'dist/index.min.js',
-      format: 'umd'
-    },
-    interop: false,
-    plugins: [
-      eslint(),
-      babel(babelConfig),
-      minify(minifyConfig),
+    export default [
+      {
+        input: 'src/index.js',
+        output: {
+          name: 'index',
+          file: 'dist/index.min.js',
+          format: 'umd'
+        },
+        interop: false,
+        plugins: [
+          eslint(),
+          babel(babelConfig),
+          minify(minifyConfig),
+        ]
+      },
+      {
+        input: 'src/stylus/app.styl',
+        output: {
+          file: 'dist/$1.js',
+          format: "system"
+        },
+        plugins: [
+          stylus(),
+          css()
+        ]
+      }
     ]
-  },
-  {
-    input: 'src/stylus/app.styl',
-    output: {
-      file: 'dist/$1.js',
-      format: "system"
-    },
-    plugins: [
-      stylus(),
-      css()
+    " > rollup.config.js
+else
+  echo "
+    import babel from 'rollup-plugin-babel';
+    import minify from 'rollup-plugin-babel-minify';
+    import { eslint } from 'rollup-plugin-eslint';
+
+    const babelConfig = { exclude: 'node_modules/**' };
+    const minifyConfig = { comments: false };
+
+    export default [
+      {
+        input: 'src/index.js',
+        output: {
+          name: 'index',
+          file: 'dist/index.min.js',
+          format: 'umd'
+        },
+        interop: false,
+        plugins: [
+          eslint(),
+          babel(babelConfig),
+          minify(minifyConfig),
+        ]
+      }
     ]
-  }
-]
-" > rollup.config.js
+    " > rollup.config.js
+fi
 
 mkdir src
 cd src
@@ -190,8 +249,14 @@ echo "
 export default () => console.log('hello halley');
 " > index.js
 
-mkdir stylus
-cd stylus
-echo " " > app.styl
-cd ../..
+if [ -n "$3" ]
+then
+  mkdir stylus
+  cd stylus
+  echo " " > app.styl
+  cd ../..
+else
+  cd ..
+fi
+
 npm install
