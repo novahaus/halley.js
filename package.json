@@ -14,7 +14,7 @@
   "scripts": {
     "build": "./bin/build.sh",
     "install": "./bin/install.sh",
-    "np": "./bin/new-component.sh"
+    "nc": "./bin/new-component.sh"
   },
   "husky": {
     "hooks": {
