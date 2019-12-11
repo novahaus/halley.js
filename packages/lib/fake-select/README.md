@@ -37,6 +37,10 @@ You can customize the classes inserted in the component, the default already imp
       select: 'halley-fake-select_select',
       span: 'halley-fake-select_span',
     },
+    selectors: {
+      select: '[data-fake-select]',
+      span: '[data-fake-span]'
+    }
   })
 ```
 

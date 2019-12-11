@@ -31,7 +31,7 @@
 
 <div align="center">
   <h4>
-    <a href="https://novahaus.com.br">Website</a> |
+    <a href="https://novahaus.com.br" target="_blank">Website</a> |
     <a href="#installing">Install</a> |
     <a href="#components">Components</a>
   </h4>
@@ -42,6 +42,7 @@
   <a href="https://novahaus.com.br">NovaHaus</a> and
   <a href="https://github.com/novahaus/halley.js/graphs/contributors">contributors </a>
 </div>
+<br />
 
 <div>
   <p>

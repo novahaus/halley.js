@@ -4,13 +4,17 @@ const defaultOptions = {
     select: 'halley-fake-select_select',
     span: 'halley-fake-select_span',
   },
+  selectors: {
+    select: '[data-fake-select]',
+    span: '[data-fake-span]',
+  },
 }
 
 function makeDropdown(el, opt) {
   const elm = el
-  const select = elm.querySelector('[data-fake-select]');
-  const label = elm.querySelector('[data-fake-span]');
   const options = opt;
+  const select = elm.querySelector(options.selectors.select);
+  const label = elm.querySelector(options.selectors.span);
 
 
   function setupListener() {
