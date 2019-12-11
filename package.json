@@ -3,13 +3,13 @@
   "version": "0.5.0",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
-  "repository": "https://github.com/novahaus/halley",
+  "repository": "https://github.com/novahaus/halley.js",
   "keywords": [
     "widget",
     "utils",
     "library"
   ],
-  "author": "NovaHaus",
+  "author": "novahaus",
   "license": "MIT",
   "scripts": {
     "build": "./bin/build.sh",
