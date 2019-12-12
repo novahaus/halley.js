@@ -9,10 +9,6 @@
       alt="NPM Version" />
   </a>
 
-  <a>
-    <img src="https://img.shields.io/travis/denysdovhan/spaceship-prompt.svg?style=flat-square" />
-  </a>
-
   <a href="https://www.facebook.com/novahaus/?ref=br_rs">
     <img src="https://img.shields.io/badge/facebook-like-blue"
       alt="NovaHaus Facebook" />
@@ -46,7 +42,7 @@
 
 <div>
   <p>
-    Halley is a library of Javascript components that facilitate web development, with easy-to-use, fairly free modules for the purpose of being minimalist.
+    Halley is a Javascript library components that facilitate web development, with easy-to-use, fairly free modules for the purpose of being minimalist.
   </p>
 </div>
 
