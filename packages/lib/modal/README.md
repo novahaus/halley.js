@@ -4,7 +4,7 @@ A simple way to implement modal in your project, you make the template.
 
 ![](https://i.imgur.com/Tci3sh7.gif)
 
-## How to use
+## Usage
 ### Single istance
 
 ```ES6
@@ -37,12 +37,27 @@ You can pass a settings object
   })
 ```
 
+### Properties
+  - `elm` - Here you have the holder element.
+
+
+### Methods
+  - `open` - Method that opens modal
+  - `close` - Method that closes modal
+
+
+### Calbacks
+These callbacks get an event as a parameter.
+
+- onOpen - Function called when opening modal
+- onClose - Function called when closing modal
+
 ### HTML Markup
 The module needs an HTML structure to work.
 
 ```html
-  <div class="halley_modal" data-modal id="my-modal">
-    <div class="halley_modal_overlay" data-modal-close></div>
+  <div class="halley_modal" halley-modal id="my-modal">
+    <div class="halley_modal_overlay" halley-modal-close></div>
 
     // Here you include your template
 
@@ -53,21 +68,20 @@ The module needs an HTML structure to work.
 
 Putting one or several buttons with the mark, in click the modal will be closed:
 ```html
-  <div class="halley_modal" data-modal id="my-modal">
-    <div class="halley_modal_overlay" data-modal-close></div>
+  <div class="halley_modal" halley-modal id="my-modal">
+    <div class="halley_modal_overlay" halley-modal-close></div>
 
-      <button data-modal-close>Close modal</button>
+      <button halley-modal-close>Close modal</button>
 
   </div>
 ```
 
 #### Example
 ```html
-// Example
-  <div class="halley_modal" data-modal id="my-modal">
-    <div class="halley_modal_overlay" data-modal-close></div>
+  <div class="halley_modal" halley-modal id="my-modal">
+    <div class="halley_modal_overlay" halley-modal-close></div>
     <div class="modal">
-      <button data-modal-close>Close modal</button>
+      <button halley-modal-close>Close modal</button>
       <p>Hello modal</p>
     </div>
   </div>

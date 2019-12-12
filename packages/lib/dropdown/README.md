@@ -4,7 +4,7 @@ A simple way to implement dropdown in your project.
 
 ![](https://i.imgur.com/Q3dUyca.gif)
 
-## How to use
+## Usage
 ### Single istance
 
 ```ES6

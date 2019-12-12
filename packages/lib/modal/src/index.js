@@ -5,22 +5,22 @@ const defaultOptions = {}
 function modal(el, opts) {
   const elm = el;
   const nameModal = elm.getAttribute('id');
-  const closebutton = Array.from(elm.querySelectorAll('[data-modal-close]'));
+  const closebutton = Array.from(elm.querySelectorAll('[halley-modal-close]'));
   const openButtons = Array.from(document.querySelectorAll(`[href="#${nameModal}"]`));
   const options = Object.assign({}, defaultOptions, opts);
   let scrollHeight = 0;
 
-  function open() {
+  function open(event) {
     elm.classList.add('active');
     document.body.classList.add('no-scroll');
     modalCount.push(nameModal);
     window.location.hash = `#${nameModal}`;
 
 
-    if (options.onOpen) options.onOpen();
+    if (options.onOpen) options.onOpen.call(elm, event);
   }
 
-  function close() {
+  function close(event) {
     elm.classList.remove('active');
     modalCount.pop();
     window.location.hash = '';
@@ -31,19 +31,19 @@ function modal(el, opts) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
-    if (options.onClose) options.onClose();
+    if (options.onClose) options.onClose.call(elm, event);
   }
 
   function toggleModal(e) {
     if (e) e.preventDefault();
 
     if (elm.classList.contains('active')) {
-      close();
+      close(e);
       window.scrollBy(0, scrollHeight);
       scrollHeight = 0;
     } else {
       scrollHeight = window.scrollY;
-      open();
+      open(e);
     }
   }
 
