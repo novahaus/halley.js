@@ -205,7 +205,7 @@ then
         input: 'src/stylus/app.styl',
         output: {
           file: 'dist/$1.js',
-          format: "system"
+          format: 'system'
         },
         plugins: [
           stylus(),
