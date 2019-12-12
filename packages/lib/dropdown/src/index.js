@@ -3,39 +3,37 @@ const defaultOptions = {
     button: '[halley-dropdown-button]',
     list: '[halley-dropdown-list]',
   },
-  insertClasses: {
-    activeButton: 'active',
-  },
+  activeClass: 'active',
 }
 
 function dropdown(el, opt) {
   const options = opt;
-  const elm = el;
-  const button = elm.querySelector(options.selectors.button);
-  const list = elm.querySelector(options.selectors.list);
+  const holder = el;
+  const button = holder.querySelector(options.selectors.button);
+  const list = holder.querySelector(options.selectors.list);
   let isOpened = false;
 
 
-  function open() {
+  function open(event) {
     const { offsetHeight } = list.firstElementChild;
     list.style.maxHeight = `${offsetHeight}px`;
-    button.classList.add(options.insertClasses.activeButton);
+    holder.classList.add(options.activeClass);
 
     isOpened = !isOpened;
-    if (options.onOpen) options.onOpen();
+    if (options.onOpen) options.onOpen.call(holder, event);
   }
 
-  function close() {
+  function close(event) {
     list.style.maxHeight = 0;
-    button.classList.remove(options.insertClasses.activeButton);
+    holder.classList.remove(options.activeClass);
 
     isOpened = !isOpened;
-    if (options.onClose) options.onClose();
+    if (options.onClose) options.onClose.call(holder, event);
   }
 
-  function toggle() {
-    if (!isOpened) open();
-    else close();
+  function toggle(e) {
+    if (!isOpened) open(e);
+    else close(e);
   }
 
   function setupListener() {
@@ -43,7 +41,7 @@ function dropdown(el, opt) {
   }
 
   function setupClasses() {
-    elm.classList.add('halley-dropdown');
+    holder.classList.add('halley-dropdown');
     list.classList.add('halley-dropdown_hld');
   }
 
@@ -60,7 +58,7 @@ function dropdown(el, opt) {
     close,
     toggle,
     elements: {
-      holder: elm,
+      holder,
       button,
       list,
     },

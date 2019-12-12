@@ -31,31 +31,32 @@ You can pass a settings object, values ​​shown here are the defaults.
 
 ```ES6
 
-  init('.my-modals', {
+  init('.my-dropdown', {
     onClose: Function, // callback on close dropdown
     onOpen: Function, // callback on open dropdown
     selectors: {
       button: '[halley-dropdown-button]',
       list: '[halley-dropdown-list]',
     },
-    insertClasses: {
-      activeButton: 'active' // class inserted in button when dropdown is open
-    }
+    activeButton: 'active' // class inserted in button when dropdown is open
   })
 ```
 
+### Properties
+  - `options` - Here you have configuration items used to create the instance.
+  - `elements` - Here you have the used elements.
+
+
 ### Methods
-When you store in a variable, you have access to some methods and data:
-```ES6
-import dropdown from 'halley.js/packages/lib/dropdown';
+  - `open` - Method that opens dropdown
+  - `close` - Method that closes dropdown
 
-const myDropdown = dropdown('#my-dropdown');
-```
-  - `Options` - Obejct -Here you have configuration items used to create the instance.
-  - `Elements` - Object -  Here you have the used elements.
-  - `open` - Function - Method that opens dropdown
-  - `close` - Function - Method that closes dropdown
 
+### Calbacks
+These callbacks get an event as a parameter.
+
+- onOpen - Function called when opening dropdown
+- onClose - Function called when closing dropdown
 
 ### HTML Markup
 The module needs an HTML structure to work, following this structure is essential for the module to work perfectly.
