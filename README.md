@@ -1,5 +1,5 @@
-  halley.js<br />
-  Halley JavaScript Library
+ <h1 align="center">
+  <img style="transform: translateX(-18%)" width="80%" src="https://i.imgur.com/7q42i6Y.png" />
 </h1>
 
 <div align="center">
