@@ -56,6 +56,7 @@ npm install halley.js
 
 ## Components
 - [modal](packages/lib/modal)<br />
+- [dropdown](packages/lib/dropdown)<br />
 - [webp-detector](packages/lib/webp-detector)<br />
 - [fake-select](packages/lib/fake-select)
 
