@@ -4,7 +4,7 @@ A simple way to implement dropdown in your project.
 
 ![](https://i.imgur.com/Q3dUyca.gif)
 
-## How to use
+## Usage
 ### Single istance
 
 ```ES6
@@ -55,8 +55,8 @@ You can pass a settings object, values ​​shown here are the defaults.
 ### Calbacks
 These callbacks get an event as a parameter.
 
-- onOpen - Function called when opening dropdown
-- onClose - Function called when closing dropdown
+- `onOpen` - Function called when opening dropdown
+- `onClose` - Function called when closing dropdown
 
 ### HTML Markup
 The module needs an HTML structure to work, following this structure is essential for the module to work perfectly.
