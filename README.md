@@ -1,5 +1,5 @@
  <h1 align="center">
-  <img style="transform: translateX(-18%)" width="80%" src="https://i.imgur.com/7q42i6Y.png" />
+  <img width="80%" src="https://i.imgur.com/aT1Ab3y.png" />
 </h1>
 
 <div align="center">
