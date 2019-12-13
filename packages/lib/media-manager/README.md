@@ -3,7 +3,7 @@
 A simple way to implement a media-manager.
 
 ## How to use
-You need to pass an array of objects, containing the desired breakpoints, an event in the window will fire when there is resize on the page, values ​​are in pixels.
+You need to pass an array of objects, containing the desired breakpoints, an event ('CHANGE_MEDIA') in the window will fire when there is resize on the page, values ​​are in pixels.
 
 
 Example:
@@ -16,7 +16,7 @@ mediaManager([
   { name: 'TABLET', value: 1150 },
 ]);
 
-window.addEventListener('CHANGE_MEDIA', e => console.log(e))
+window.addEventListener('CHANGE_MEDIA', e => console.log(e.detail))
 ```
 
 ### Properties

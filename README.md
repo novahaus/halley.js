@@ -59,6 +59,7 @@ npm install halley.js
 - [dropdown](packages/lib/dropdown)<br />
 - [webp-detector](packages/lib/webp-detector)<br />
 - [fake-select](packages/lib/fake-select)
+- [media-manager](packages/lib/media-manager)
 
 ## See our projects
   Here is a list of our other projects.
