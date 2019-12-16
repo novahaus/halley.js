@@ -60,6 +60,7 @@ npm install halley.js
 - [webp-detector](packages/lib/webp-detector)<br />
 - [fake-select](packages/lib/fake-select)
 - [media-manager](packages/lib/media-manager)
+- [accordion](packages/lib/accordion)
 
 ## See our projects
   Here is a list of our other projects.

@@ -7,59 +7,59 @@ cd $1
 if [ -n "$3" ]
 then
   echo '
-    {
-      "name": "'$1'.js",
-      "version": "1.0.0",
-      "description": "",
-      "main": "dist/index.min.js",
-      "scripts": {
-        "build": "./node_modules/.bin/rollup -c"
-      },
-      "author": "'$2'",
-      "license": "MIT",
-      "dependencies": {},
-      "devDependencies": {
-        "babel-core": "6",
-        "babel-plugin-external-helpers": "^6.22.0",
-        "babel-preset-env": "^1.7.0",
-        "cross-origin": "^1.0.6",
-        "eslint-plugin-import": "^2.19.1",
-        "rollup": "^0.66.6",
-        "rollup-plugin-babel": "3",
-        "rollup-plugin-babel-minify": "^6.1.1",
-        "rollup-plugin-css-only": "^1.0.0",
-        "rollup-plugin-eslint": "^7.0.0",
-        "eslint-config-airbnb": "^18.0.1",
-        "rollup-plugin-stylus-compiler": "^1.0.1"
-      }
-    }
+{
+  "name": "'$1'.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.min.js",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c"
+  },
+  "author": "'$2'",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-origin": "^1.0.6",
+    "eslint-plugin-import": "^2.19.1",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "3",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "rollup-plugin-stylus-compiler": "^1.0.1"
+  }
+}
     ' > package.json
 else
   echo '
-    {
-      "name": "'$1'.js",
-      "version": "1.0.0",
-      "description": "",
-      "main": "dist/index.min.js",
-      "scripts": {
-        "build": "./node_modules/.bin/rollup -c"
-      },
-      "author": "'$2'",
-      "license": "MIT",
-      "dependencies": {},
-      "devDependencies": {
-        "babel-core": "6",
-        "babel-plugin-external-helpers": "^6.22.0",
-        "babel-preset-env": "^1.7.0",
-        "cross-origin": "^1.0.6",
-        "eslint-plugin-import": "^2.19.1",
-        "rollup": "^0.66.6",
-        "rollup-plugin-babel": "3",
-        "rollup-plugin-babel-minify": "^6.1.1",
-        "rollup-plugin-eslint": "^7.0.0",
-        "eslint-config-airbnb": "^18.0.1"
-      }
-    }
+{
+  "name": "'$1'.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.min.js",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c"
+  },
+  "author": "'$2'",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-origin": "^1.0.6",
+    "eslint-plugin-import": "^2.19.1",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "3",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.0.1"
+  }
+}
     ' > package.json
 fi
 
@@ -177,42 +177,42 @@ echo "
 if [ -n "$3" ]
 then
   echo "
-    import babel from 'rollup-plugin-babel';
-    import minify from 'rollup-plugin-babel-minify';
-    import stylus  from 'rollup-plugin-stylus-compiler';
-    import css from 'rollup-plugin-css-only';
-    import { eslint } from 'rollup-plugin-eslint';
+import babel from 'rollup-plugin-babel';
+import minify from 'rollup-plugin-babel-minify';
+import stylus  from 'rollup-plugin-stylus-compiler';
+import css from 'rollup-plugin-css-only';
+import { eslint } from 'rollup-plugin-eslint';
 
-    const babelConfig = { exclude: 'node_modules/**' };
-    const minifyConfig = { comments: false };
+const babelConfig = { exclude: 'node_modules/**' };
+const minifyConfig = { comments: false };
 
-    export default [
-      {
-        input: 'src/index.js',
-        output: {
-          name: 'index',
-          file: 'dist/index.min.js',
-          format: 'umd'
-        },
-        interop: false,
-        plugins: [
-          eslint(),
-          babel(babelConfig),
-          minify(minifyConfig),
-        ]
-      },
-      {
-        input: 'src/stylus/app.styl',
-        output: {
-          file: 'dist/$1.js',
-          format: 'system'
-        },
-        plugins: [
-          stylus(),
-          css()
-        ]
-      }
+export default [
+  {
+    input: 'src/index.js',
+    output: {
+      name: 'index',
+      file: 'dist/index.min.js',
+      format: 'umd'
+    },
+    interop: false,
+    plugins: [
+      eslint(),
+      babel(babelConfig),
+      minify(minifyConfig),
     ]
+  },
+  {
+    input: 'src/stylus/app.styl',
+    output: {
+      file: 'dist/$1.js',
+      format: 'system'
+    },
+    plugins: [
+      stylus(),
+      css()
+    ]
+  }
+]
     " > rollup.config.js
 else
   echo "
@@ -240,6 +240,130 @@ else
       }
     ]
     " > rollup.config.js
+fi
+
+if [ -n "$3" ]
+then
+  echo "
+# $1.js - A halley.js library
+
+A simple way to implement accordion in your project.
+
+![]()
+
+## Usage
+### Startup
+
+```ES6
+import '$1' from 'halley.js/packages/lib/'$1';
+
+'$1'("#my-'$1'"); // Here you can pass an element or a selector
+```
+
+### CSS
+you need to import module css
+```SCSS
+  @import 'node_modules/halley.js/packages/lib/'$1'/dist/'$1'.css';
+```
+
+### Options
+You can pass a settings object, values ​​shown here are the defaults.
+
+```ES6
+
+  accordion('#my-accordion', {
+    onClose: Function, // callback on close accordion item.
+    onOpen: Function, // callback on open accordion item.
+    toggleClick: true, // Closes the last opened item by opening another.
+    activeClass: 'active' // class inserted in button when accordion item is open.
+  })
+```
+
+### Properties
+  - `lorem` - lorem ipsum.
+
+
+### Methods
+  - `lorem` - lorem ipsum.
+
+### Calbacks
+These callbacks get an event as a parameter.
+
+- `onOpen` - Function called when opening accordion item.
+- `onClose` - Function called when closing accordion item.
+
+### HTML Markup
+The module needs an HTML structure to work, following this structure is essential for the module to work perfectly.
+
+```html
+  <p>Hello</p>
+```
+
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+MIT. © 2020 [NovaHaus](https://www.novahaus.com.br)
+
+    " > README.md
+else
+  echo "
+   # $1.js - A halley.js library
+
+A simple way to implement accordion in your project.
+
+![]()
+
+## Usage
+### Startup
+
+```ES6
+import '$1' from 'halley.js/packages/lib/'$1';
+
+'$1'("#my-'$1'"); // Here you can pass an element or a selector
+```
+
+### Options
+You can pass a settings object, values ​​shown here are the defaults.
+
+```ES6
+
+  accordion('#my-accordion', {
+    onClose: Function, // callback on close accordion item.
+    onOpen: Function, // callback on open accordion item.
+    toggleClick: true, // Closes the last opened item by opening another.
+    activeClass: 'active' // class inserted in button when accordion item is open.
+  })
+```
+
+### Properties
+  - `lorem` - lorem ipsum.
+
+
+### Methods
+  - `lorem` - lorem ipsum.
+
+### Calbacks
+These callbacks get an event as a parameter.
+
+- `onOpen` - Function called when opening accordion item.
+- `onClose` - Function called when closing accordion item.
+
+### HTML Markup
+The module needs an HTML structure to work, following this structure is essential for the module to work perfectly.
+
+```html
+  <p>Hello</p>
+```
+
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+MIT. © 2020 [NovaHaus](https://www.novahaus.com.br)
+    " > README.md
 fi
 
 mkdir src
