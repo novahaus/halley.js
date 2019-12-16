@@ -61,6 +61,7 @@ npm install halley.js
 - [fake-select](packages/lib/fake-select)
 - [media-manager](packages/lib/media-manager)
 - [accordion](packages/lib/accordion)
+- [accessibility](packages/lib/accessibility)
 
 ## See our projects
   Here is a list of our other projects.
