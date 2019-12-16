@@ -5,12 +5,19 @@ A simple way to implement accordion in your project.
 ![](https://i.imgur.com/LXIDyHZ.gif)
 
 ## Usage
-### Startup
+### Single istance
 
 ```ES6
 import accordion from 'halley.js/packages/lib/accordion';
 
 accordion('#my-accordion'); // Here you can pass an element or a selector
+```
+
+### Multiple instances
+```ES6
+  import { init } from 'halley.js/packages/lib/accodions';
+
+  init('.my-accodions'); // Here you can pass an selector or an array of elements
 ```
 
 ### CSS

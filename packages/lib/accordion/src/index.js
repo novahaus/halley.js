@@ -15,7 +15,7 @@ const makeStructure = arr => {
 }
 
 
-export default function accordion(selector, opt) {
+function accordion(selector, opt) {
   const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
   const childs = Array.from(elm.children);
   const options = Object.assign({}, defaultOptions, opt);
@@ -73,4 +73,14 @@ export default function accordion(selector, opt) {
     open: idx => open(null, idx),
     close: idx => close(null, idx),
   }
+}
+
+export default (selector, opt) => {
+  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+  return accordion(elm, opt);
+}
+
+export const init = (selector, opt) => {
+  const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector))
+  return data.map(elm => accordion(elm, opt));
 }
