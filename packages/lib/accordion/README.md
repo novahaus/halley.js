@@ -15,7 +15,7 @@ accordion('#my-accordion'); // Here you can pass an element or a selector
 
 ### Multiple instances
 ```ES6
-  import { init } from 'halley.js/packages/lib/accodions';
+  import { init } from 'halley.js/packages/lib/accodion';
 
   init('.my-accodions'); // Here you can pass an selector or an array of elements
 ```
