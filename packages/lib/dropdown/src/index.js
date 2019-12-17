@@ -1,3 +1,5 @@
+import selector, { all } from '../../../utils/selector';
+
 const defaultOptions = {
   selectors: {
     button: '[halley-dropdown-button]',
@@ -65,12 +67,12 @@ function dropdown(el, opt) {
   }
 }
 
-export default (selector, opt) => {
-  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+export default (slc, opt) => {
+  const elm = selector(slc);
   return dropdown(elm, Object.assign({}, defaultOptions, opt));
 }
 
-export const init = (selector, opt) => {
-  const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector))
+export const init = (slc, opt) => {
+  const data = all(slc);
   return data.map(elm => dropdown(elm, Object.assign({}, defaultOptions, opt)));
 }

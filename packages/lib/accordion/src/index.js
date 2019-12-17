@@ -1,3 +1,5 @@
+import selector, { all } from '../../../utils/selector';
+
 const defaultOptions = {
   toggleClick: true,
   activeClass: 'active',
@@ -15,9 +17,9 @@ const makeStructure = arr => {
 }
 
 
-function accordion(selector, opt) {
-  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
-  const childs = Array.from(elm.children);
+function accordion(elm, opt) {
+  const ctx = elm;
+  const childs = Array.from(ctx.children);
   const options = Object.assign({}, defaultOptions, opt);
   const items = makeStructure(childs);
   let lastOpened = -1;
@@ -75,12 +77,12 @@ function accordion(selector, opt) {
   }
 }
 
-export default (selector, opt) => {
-  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+export default (slc, opt) => {
+  const elm = selector(slc);
   return accordion(elm, opt);
 }
 
-export const init = (selector, opt) => {
-  const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector))
+export const init = (slc, opt) => {
+  const data = all(slc);
   return data.map(elm => accordion(elm, opt));
 }

@@ -1,6 +1,8 @@
- <h1 align="center">
-  <img width="80%" src="https://i.imgur.com/aT1Ab3y.png" />
-</h1>
+<div>
+  <h1 align="center">
+    <img width="80%" src="https://i.imgur.com/aT1Ab3y.png" />
+  </h1>
+</div>
 
 <div align="center">
   <!-- NPM Version -->

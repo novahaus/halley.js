@@ -1,27 +1,29 @@
+import selector, { all } from '../../../utils/selector';
+
 let modalCount = [];
 
 const defaultOptions = {}
 
-function modal(el, opts) {
-  const elm = el;
-  const nameModal = elm.getAttribute('id');
-  const closebutton = Array.from(elm.querySelectorAll('[halley-modal-close]'));
+function modal(elm, opts) {
+  const ctx = elm;
+  const nameModal = ctx.getAttribute('id');
+  const closebutton = Array.from(ctx.querySelectorAll('[halley-modal-close]'));
   const openButtons = Array.from(document.querySelectorAll(`[href="#${nameModal}"]`));
   const options = Object.assign({}, defaultOptions, opts);
   let scrollHeight = 0;
 
   function open(event) {
-    elm.classList.add('active');
+    ctx.classList.add('active');
     document.body.classList.add('no-scroll');
     modalCount.push(nameModal);
     window.location.hash = `#${nameModal}`;
 
 
-    if (options.onOpen) options.onOpen.call(elm, event);
+    if (options.onOpen) options.onOpen.call(ctx, event);
   }
 
   function close(event) {
-    elm.classList.remove('active');
+    ctx.classList.remove('active');
     modalCount.pop();
     window.location.hash = '';
 
@@ -31,13 +33,13 @@ function modal(el, opts) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
-    if (options.onClose) options.onClose.call(elm, event);
+    if (options.onClose) options.onClose.call(ctx, event);
   }
 
   function toggleModal(e) {
     if (e) e.preventDefault();
 
-    if (elm.classList.contains('active')) {
+    if (ctx.classList.contains('active')) {
       close(e);
       window.scrollBy(0, scrollHeight);
       scrollHeight = 0;
@@ -61,19 +63,19 @@ function modal(el, opts) {
   init();
 
   return {
-    elm,
+    elm: ctx,
     toggleModal,
     open,
     close,
   }
 }
 
-export default (selector, opt) => {
-  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+export default (slc, opt) => {
+  const elm = selector(slc);
   return modal(elm, opt);
 }
 
-export const init = (selector, opt) => {
-  const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector))
+export const init = (slc, opt) => {
+  const data = all(slc);
   return data.map(elm => modal(elm, opt));
 }

@@ -1,3 +1,5 @@
+import selector, { all } from '../../../utils/selector';
+
 const defaultOptions = {
   insertClasses: {
     holder: 'halley-fake-select',
@@ -10,11 +12,11 @@ const defaultOptions = {
   },
 }
 
-function makeDropdown(el, opt) {
-  const elm = el
+function makeDropdown(elm, opt) {
+  const ctx = elm;
   const options = opt;
-  const select = elm.querySelector(options.selectors.select);
-  const label = elm.querySelector(options.selectors.span);
+  const select = ctx.querySelector(options.selectors.select);
+  const label = ctx.querySelector(options.selectors.span);
 
 
   function setupListener() {
@@ -28,7 +30,7 @@ function makeDropdown(el, opt) {
   }
 
   function setupClasses() {
-    elm.classList.add(options.insertClasses.holder);
+    ctx.classList.add(options.insertClasses.holder);
     select.classList.add(options.insertClasses.select);
     label.classList.add(options.insertClasses.span);
   }
@@ -42,7 +44,7 @@ function makeDropdown(el, opt) {
 
   return {
     elements: {
-      holder: elm,
+      holder: ctx,
       select,
       label,
     },
@@ -51,12 +53,12 @@ function makeDropdown(el, opt) {
   }
 }
 
-export default (selector, opt) => {
-  const elm = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+export default (slc, opt) => {
+  const elm = selector(slc);
   return makeDropdown(elm, Object.assign({}, defaultOptions, opt ));
 };
 
-export const init = (selector, opt) => {
-  const data = (typeof selector === 'object') ? selector : Array.from(document.querySelectorAll(selector));
+export const init = (slc, opt) => {
+  const data = all(slc);
   return data.map(elm => makeDropdown(elm, Object.assign({}, defaultOptions, opt )));
 }
