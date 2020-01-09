@@ -57,7 +57,10 @@ function modal(elm, opts) {
   function init() {
     setupListeners();
 
-    if (window.location.hash == `#${nameModal}`) open();
+    if (window.location.hash == `#${nameModal}`) {
+      open();
+      if (options.onStartOpen) options.onStartOpen.call(ctx, event);
+    }
   }
 
   init();
