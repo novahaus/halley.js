@@ -1,6 +1,7 @@
 import selector, { all } from '../../../utils/selector';
 
 let modalCount = [];
+let lastOpen= null;
 
 const defaultOptions = {}
 
@@ -10,17 +11,22 @@ function modal(elm, opts) {
   const closebutton = Array.from(ctx.querySelectorAll('[halley-modal-close]'));
   const openButtons = Array.from(document.querySelectorAll(`[href="#${nameModal}"]`));
   const options = Object.assign({}, defaultOptions, opts);
+  const structureData = { elm: ctx, nameModal, toggleModal, open, close };
   let scrollHeight = 0;
 
   function open(event) {
     ctx.classList.add('active');
     document.body.classList.add('no-scroll');
-    modalCount.push(nameModal);
     window.location.hash = `#${nameModal}`;
-
+    modalCount.push(nameModal);
     openButtons.forEach(btn => btn.classList.add('active'));
 
     if (options.onOpen) options.onOpen.call(ctx, event);
+    if (!options.preserve && lastOpen) {
+      lastOpen.close()
+    }
+
+    lastOpen = structureData;
   }
 
   function close(event) {
@@ -37,6 +43,7 @@ function modal(elm, opts) {
     openButtons.forEach(btn => btn.classList.remove('active'));
 
     if (options.onClose) options.onClose.call(ctx, event);
+    if (!options.preserve) lastOpen = null;
   }
 
   function toggleModal(e) {
@@ -68,12 +75,7 @@ function modal(elm, opts) {
 
   init();
 
-  return {
-    elm: ctx,
-    toggleModal,
-    open,
-    close,
-  }
+  return structureData;
 }
 
 export default (slc, opt) => {
