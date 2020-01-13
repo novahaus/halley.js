@@ -3,7 +3,9 @@ import selector, { all } from '../../../utils/selector';
 let modalCount = [];
 let lastOpen= null;
 
-const defaultOptions = {}
+const defaultOptions = {
+  hashHistory: true,
+}
 
 function modal(elm, opts) {
   const ctx = elm;
@@ -17,10 +19,10 @@ function modal(elm, opts) {
   function open(event) {
     ctx.classList.add('active');
     document.body.classList.add('no-scroll');
-    window.location.hash = `#${nameModal}`;
     modalCount.push(nameModal);
     openButtons.forEach(btn => btn.classList.add('active'));
 
+    if (options.hashHistory) window.location.hash = `#${nameModal}`;
     if (options.onOpen) options.onOpen.call(ctx, event);
     if (!options.preserve && lastOpen) {
       lastOpen.close()
@@ -32,11 +34,11 @@ function modal(elm, opts) {
   function close(event) {
     ctx.classList.remove('active');
     modalCount.pop();
-    window.location.hash = '';
 
     if (modalCount.length === 0) {
       document.body.classList.remove('no-scroll');
-    } else {
+      window.location.hash = '';
+    } else if (options.hashHistory) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
