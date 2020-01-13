@@ -34,7 +34,7 @@ function modal(elm, opts) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
-    openButtons.forEach(btn => btn.classList.add('remove'));
+    openButtons.forEach(btn => btn.classList.remove('active'));
 
     if (options.onClose) options.onClose.call(ctx, event);
   }
