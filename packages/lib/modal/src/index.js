@@ -18,6 +18,7 @@ function modal(elm, opts) {
     modalCount.push(nameModal);
     window.location.hash = `#${nameModal}`;
 
+    openButtons.forEach(btn => btn.classList.add('active'));
 
     if (options.onOpen) options.onOpen.call(ctx, event);
   }
@@ -32,6 +33,8 @@ function modal(elm, opts) {
     } else {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
+
+    openButtons.forEach(btn => btn.classList.add('remove'));
 
     if (options.onClose) options.onClose.call(ctx, event);
   }
