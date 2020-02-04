@@ -1,4 +1,4 @@
-if ($hamburger-types['slider-r']) {
+if index($hamburger-types, 'slider-r') {
   /*
    * Slider Reverse
    */
@@ -18,7 +18,7 @@ if ($hamburger-types['slider-r']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         $y-offset = $hamburger-layer-spacing + $hamburger-layer-height;
 

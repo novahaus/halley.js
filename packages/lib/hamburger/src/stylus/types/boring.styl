@@ -1,4 +1,4 @@
-if ($hamburger-types['boring']) {
+if index($hamburger-types, 'boring') {
   /*
    * Boring
    */
@@ -11,7 +11,7 @@ if ($hamburger-types['boring']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: rotate(45deg);
 

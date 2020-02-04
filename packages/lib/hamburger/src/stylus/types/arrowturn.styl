@@ -1,8 +1,8 @@
-if ($hamburger-types['arrowturn']) {
+if index($hamburger-types, 'arrowturn') {
   /*
    * Arrow Turn
    */
-  .hamburger--arrowturn.is-active {
+  .hamburger--arrowturn.{$hamburger-active-class} {
     .hamburger-inner {
       transform: rotate(-180deg);
 

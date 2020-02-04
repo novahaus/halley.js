@@ -1,4 +1,4 @@
-if ($hamburger-types['slider']) {
+if index($hamburger-types, 'slider') {
   /*
    * Slider
    */
@@ -18,7 +18,7 @@ if ($hamburger-types['slider']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         $y-offset = $hamburger-layer-spacing + $hamburger-layer-height;
 

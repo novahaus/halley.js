@@ -1,4 +1,4 @@
-if ($hamburger-types['stand-r']) {
+if index($hamburger-types, 'stand-r') {
   /*
    * Stand Reverse
    */
@@ -18,7 +18,7 @@ if ($hamburger-types['stand-r']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: rotate(-90deg);
         background-color: transparent !important;

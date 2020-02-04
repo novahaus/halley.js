@@ -1,4 +1,4 @@
-if ($hamburger-types['minus']) {
+if index($hamburger-types, 'minus') {
   /*
    * Minus
    */
@@ -12,7 +12,7 @@ if ($hamburger-types['minus']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         &::before,
         &::after {

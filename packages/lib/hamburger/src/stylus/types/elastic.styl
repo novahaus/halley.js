@@ -1,4 +1,4 @@
-if ($hamburger-types['elastic']) {
+if index($hamburger-types, 'elastic') {
   /*
    * Elastic
    */
@@ -19,7 +19,7 @@ if ($hamburger-types['elastic']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         $y-offset = $hamburger-layer-spacing + $hamburger-layer-height;
 

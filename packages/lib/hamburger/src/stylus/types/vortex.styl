@@ -1,4 +1,4 @@
-if ($hamburger-types['vortex']) {
+if index($hamburger-types, 'vortex') {
   /*
    * Vortex
    */
@@ -23,7 +23,7 @@ if ($hamburger-types['vortex']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: rotate(765deg);
         transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);

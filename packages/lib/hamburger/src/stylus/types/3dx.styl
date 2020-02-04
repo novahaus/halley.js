@@ -1,4 +1,4 @@
-if ($hamburger-types['3dx']) {
+if index($hamburger-types, '3dx') {
   /*
    * 3DX
    */
@@ -17,7 +17,7 @@ if ($hamburger-types['3dx']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         background-color: transparent !important;
         transform: rotateY(180deg);

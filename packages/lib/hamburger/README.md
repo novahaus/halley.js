@@ -1,93 +1,103 @@
-# modal.js - A halley.js library
+# hamburger.js - A halley.js library
 
-A simple way to implement modal in your project, you make the template.
+A simple way to implement menu hamburger in your project, you make the template.
 
-![](https://i.imgur.com/Tci3sh7.gif)
+<!-- ![](https://i.imgur.com/Tci3sh7.gif) -->
 
 ## Usage
-### Single istance
 
-```ES6
-import modal from 'halley.js/packages/lib/modal';
-
-modal('#my-modal'); // Here you can pass an element or a selector
-```
-
-### Multiple instances
-```ES6
-  import { init } from 'halley.js/packages/lib/modal';
-
-  init('.my-modals'); // Here you can pass an selector or an array of elements
-```
-
-### CSS
+### 1. STYLUS
 you need to import module css
-```SCSS
-  @import 'node_modules/halley.js/packages/lib/modal/dist/modal.css';
+```STYLUS
+  @import 'node_modules/halley.js/packages/lib/hamburger';
 ```
 
-### Options
-You can pass a settings object
-
-```ES6
-
-  init('.my-modals', {
-    onClose: Function, // callback on close modal
-    onOpen: Function // callback on open modal
-  })
-```
-
-### Properties
-  - `elm` - Here you have the holder element.
-
-
-### Methods
-  - `open` - Method that opens modal
-  - `close` - Method that closes modal
-
-
-### Calbacks
-These callbacks get an event as a parameter.
-
-- onOpen - Function called when opening modal
-- onClose - Function called when closing modal
-
-### HTML Markup
-The module needs an HTML structure to work.
+### 2. HTML Markup
+Add the base hamburger markup:
 
 ```html
-  <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
-
-    // Here you include your template
-
-  </div>
-
-  <a href="#my-modal">Open modal</a> // Pointing a link to modal, on click the modal will open
+  <button class="hamburger" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
 ```
 
-Putting one or several buttons with the mark, in click the modal will be closed:
+### 3. Choose style
+Append the class name of the type of hamburger you’re craving:
+
 ```html
-  <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
-
-      <button halley-modal-close>Close modal</button>
-
-  </div>
+  <button class="hamburger hamburger--collapse" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
 ```
 
-#### Example
-```html
-  <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
-    <div class="modal">
-      <button halley-modal-close>Close modal</button>
-      <p>Hello modal</p>
-    </div>
-  </div>
+### 4. Customization
+To override default settings, declare them before importing hamburger:
 
-  <a href="#my-modal">Open modal</a>
+```STYLUS
+$hamburger-padding-x = 20px;
+$hamburger-padding-y = 15px;
+$hamburger-types     = ( 'collapse' );
+
+@import 'node_modules/halley.js/packages/lib/hamburger';
 ```
+
+Here is the full list of default settings (found in node_modules/halley.js/packages/lib/hamburger/src/stylus/app.styl);
+
+```STYLUS
+$hamburger-padding-x            = 15px;
+$hamburger-padding-y            = 15px;
+$hamburger-layer-width          = 40px;
+$hamburger-layer-height         = 4px;
+$hamburger-layer-spacing        = 6px;
+$hamburger-layer-color          = #000;
+$hamburger-layer-border-radius  = 4px;
+$hamburger-hover-opacity        = 0.7;
+$hamburger-active-layer-color   = $hamburger-layer-color;
+$hamburger-active-hover-opacity = $hamburger-hover-opacity;
+$hamburger-hover-use-filter    = false;
+$hamburger-hover-filter        = opacity(50%);
+$hamburger-active-hover-filter = $hamburger-hover-filter;
+$hamburger-active-class = '-active';
+
+$hamburger-types = [
+  3dx
+  3dx-r
+  3dy
+  3dy-r
+  3dxy
+  3dxy-r
+  arrow
+  arrow-r
+  arrowalt
+  arrowalt-r
+  arrowturn
+  arrowturn-r
+  boring
+  collapse
+  collapse-r
+  elastic
+  elastic-r
+  emphatic
+  emphatic-r
+  minus
+  slider
+  slider-r
+  spring
+  spring-r
+  stand
+  stand-r
+  spin
+  spin-r
+  squeeze
+  vortex
+  vortex-r
+];
+```
+
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)

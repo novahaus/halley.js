@@ -1,4 +1,4 @@
-if ($hamburger-types['arrowalt']) {
+if index($hamburger-types, 'arrowalt') {
   /*
    * Arrow Alt
    */
@@ -15,7 +15,7 @@ if ($hamburger-types['arrowalt']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         &::before {
           top: 0;

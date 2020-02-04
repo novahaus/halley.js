@@ -1,4 +1,4 @@
-if ($hamburger-types['spring']) {
+if index($hamburger-types, 'spring') {
   /*
    * Spring
    */
@@ -20,7 +20,7 @@ if ($hamburger-types['spring']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transition-delay: 0.22s;
         background-color: transparent !important;

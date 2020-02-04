@@ -1,4 +1,4 @@
-if ($hamburger-types['3dx-r']) {
+if index($hamburger-types, '3dx-r') {
   /*
    * 3DX Reverse
    */
@@ -17,7 +17,7 @@ if ($hamburger-types['3dx-r']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         background-color: transparent !important;
         transform: rotateY(-180deg);

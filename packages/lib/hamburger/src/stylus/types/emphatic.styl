@@ -1,4 +1,4 @@
-if ($hamburger-types['emphatic']) {
+if index($hamburger-types, 'emphatic') {
   /*
    * Emphatic
    */
@@ -24,7 +24,7 @@ if ($hamburger-types['emphatic']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transition-delay: 0s;
         transition-timing-function: ease-out;

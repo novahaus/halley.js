@@ -64,6 +64,7 @@ npm install halley.js
 - [media-manager](packages/lib/media-manager)
 - [accordion](packages/lib/accordion)
 - [accessibility](packages/lib/accessibility)
+- [hamburger](packages/lib/hamburger)
 
 ## See our projects
   Here is a list of our other projects.

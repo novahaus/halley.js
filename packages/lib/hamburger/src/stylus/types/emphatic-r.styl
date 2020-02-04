@@ -1,4 +1,4 @@
-if ($hamburger-types['emphatic-r']) {
+if index($hamburger-types, 'emphatic-r') {
   /*
    * Emphatic Reverse
    */
@@ -24,7 +24,7 @@ if ($hamburger-types['emphatic-r']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transition-delay: 0s;
         transition-timing-function: ease-out;

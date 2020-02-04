@@ -1,4 +1,4 @@
-if ($hamburger-types['squeeze']) {
+if index($hamburger-types, 'squeeze') {
   /*
    * Squeeze
    */
@@ -18,7 +18,7 @@ if ($hamburger-types['squeeze']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: rotate(45deg);
         transition-delay: 0.12s;

@@ -1,4 +1,4 @@
-if ($hamburger-types['spin']) {
+if index($hamburger-types, 'spin') {
   /*
    * Spin
    */
@@ -18,7 +18,7 @@ if ($hamburger-types['spin']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: rotate(225deg);
         transition-delay: 0.12s;

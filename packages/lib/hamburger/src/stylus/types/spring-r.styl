@@ -1,4 +1,4 @@
-if ($hamburger-types['spring-r']) {
+if index($hamburger-types, 'spring-r') {
   /*
    * Spring Reverse
    */
@@ -22,7 +22,7 @@ if ($hamburger-types['spring-r']) {
       }
     }
 
-    &.is-active {
+    &.{$hamburger-active-class} {
       .hamburger-inner {
         transform: translate3d(0, ($hamburger-layer-spacing + $hamburger-layer-height) * -1, 0) rotate(-45deg);
         transition-delay: 0.22s;
