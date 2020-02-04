@@ -1,0 +1,25 @@
+{
+  "name": "hamburger.js",
+  "version": "1.0.1",
+  "description": "",
+  "main": "src/stylus/app.styl",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c"
+  },
+  "author": "Leandro C. Silva",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-external-helpers": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "cross-origin": "^1.0.6",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.19.1",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "^4.0.1",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-stylus-compiler": "^1.0.1"
+  }
+}

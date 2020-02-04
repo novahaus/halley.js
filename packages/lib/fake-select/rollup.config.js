@@ -4,7 +4,6 @@ import stylus  from 'rollup-plugin-stylus-compiler';
 import css from 'rollup-plugin-css-only';
 import { eslint } from "rollup-plugin-eslint";
 
-const babelConfig = { exclude: 'node_modules/**' };
 const minifyConfig = { comments: false };
 
 export default [
@@ -18,7 +17,7 @@ export default [
     interop: false,
     plugins: [
       eslint(),
-      babel(babelConfig),
+      babel(),
       minify(minifyConfig),
     ]
   },
