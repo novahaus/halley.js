@@ -1,11 +1,13 @@
 import selector, { all } from '../../../utils/selector';
 
-let modalCount = [];
-let lastOpen= null;
+const modalCount = [];
+let lastOpen = null;
 
 const defaultOptions = {
   hashHistory: true,
-}
+  disableScroll: true,
+  disableEvents: false,
+};
 
 function modal(elm, opts) {
   const ctx = elm;
@@ -17,59 +19,61 @@ function modal(elm, opts) {
   let scrollHeight = 0;
 
   function open(event) {
+    if (event && options.disableEvents) event.preventDefault();
     ctx.classList.add('active');
-    document.body.classList.add('no-scroll');
     modalCount.push(nameModal);
-    openButtons.forEach(btn => btn.classList.add('active'));
+    openButtons.forEach((btn) => btn.classList.add('active'));
 
+    if (options.disableScroll) document.body.classList.add('no-scroll');
     if (options.hashHistory) window.location.hash = `#${nameModal}`;
     if (options.onOpen) options.onOpen.call(ctx, event);
     if (!options.preserve && lastOpen) {
-      lastOpen.close()
+      lastOpen.close();
     }
 
     lastOpen = structureData;
   }
 
   function close(event) {
+    if (event && options.disableEvents) event.preventDefault();
     ctx.classList.remove('active');
     modalCount.pop();
 
     if (modalCount.length === 0) {
-      document.body.classList.remove('no-scroll');
       window.location.hash = '';
+      if (options.disableScroll) document.body.classList.remove('no-scroll');
     } else if (options.hashHistory) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
-    openButtons.forEach(btn => btn.classList.remove('active'));
+    openButtons.forEach((btn) => btn.classList.remove('active'));
 
     if (options.onClose) options.onClose.call(ctx, event);
     if (!options.preserve) lastOpen = null;
   }
 
-  function toggleModal(e) {
-    if (e) e.preventDefault();
+  function toggleModal(event) {
+    if (event && options.disableEvents) event.preventDefault();
 
     if (ctx.classList.contains('active')) {
-      close(e);
+      close(event);
       window.scrollBy(0, scrollHeight);
       scrollHeight = 0;
     } else {
       scrollHeight = window.scrollY;
-      open(e);
+      open(event);
     }
   }
 
   function setupListeners() {
-    openButtons.forEach(btn => btn.addEventListener('click', toggleModal));
-    closebutton.forEach(btn => btn.addEventListener('click', close));
+    openButtons.forEach((btn) => btn.addEventListener('click', toggleModal));
+    closebutton.forEach((btn) => btn.addEventListener('click', close));
   }
 
   function init() {
     setupListeners();
 
-    if (window.location.hash == `#${nameModal}`) {
+    if (window.location.hash === `#${nameModal}`) {
       open();
       if (options.onStartOpen) options.onStartOpen.call(ctx, event);
     }
