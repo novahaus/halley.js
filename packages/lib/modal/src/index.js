@@ -7,6 +7,7 @@ let lastOpen = null;
 const defaultOptions = {
   hashHistory: true,
   disableScroll: true,
+  disableEvents: true,
 };
 
 function modal(elm, opts) {
@@ -61,7 +62,7 @@ function modal(elm, opts) {
   }
 
   function close(event) {
-    event.preventDefault();
+    if (event && options.disableEvents) event.preventDefault();
     ctx.setAttribute('aria-hidden', true);
     changeTabIndex(-1);
     ctx.classList.remove('active');
