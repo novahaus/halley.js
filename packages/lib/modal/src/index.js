@@ -51,7 +51,7 @@ function modal(elm, opts) {
     openButtons.forEach((btn) => btn.classList.add('active'));
 
     if (options.disableScroll) document.documentElement.classList.add('no-scroll');
-    if (options.onOpen) options.onOpen.call(ctx, event);
+    if (options.onOpen) options.onOpen(ctx, event);
     if (options.hashHistory) window.location.hash = `#${nameModal}`;
     if (!options.preserve && lastOpen) {
       lastOpen.close();
@@ -77,7 +77,7 @@ function modal(elm, opts) {
 
     openButtons.forEach((btn) => btn.classList.remove('active'));
 
-    if (options.onClose) options.onClose.call(ctx, event);
+    if (options.onClose) options.onClose(ctx, event);
     if (!options.preserve) lastOpen = null;
   }
 
