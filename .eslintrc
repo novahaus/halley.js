@@ -1,0 +1,29 @@
+{
+  "root": true,
+	"extends": "airbnb",
+	"env": {
+		"es6": true
+	},
+	"rules": {
+		"no-console": 2
+	},
+	"globals": {
+		"document": true,
+		"localStorage": true,
+		"window": true,
+    "navigator": true,
+    "DOMParser": true,
+    "FormData": true,
+    "Image": true
+  },
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": true
+  },
+	"settings": {
+		"react": {
+			"version": "999.999.999"
+		}
+	}
+}

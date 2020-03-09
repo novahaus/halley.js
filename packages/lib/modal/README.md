@@ -1,8 +1,15 @@
-# modal.js - A halley.js library
+# modal.js - lighweight, configurable and a11y-enable modal library.
 
 A simple way to implement modal in your project, you make the template.
 
 ![](https://i.imgur.com/Tci3sh7.gif)
+
+## Features
+
+[✔] Closing modal on overlay click<br />
+[✔] Closing modal on esc button press<br />
+[✔] Toggling aria-hidden attribute on modal<br />
+[✔] Trapping tab focus within the modal<br />
 
 ## Usage
 ### Single istance
@@ -34,6 +41,9 @@ You can pass a settings object
   init('.my-modals', {
     onClose: Function, // callback on close modal
     onOpen: Function // callback on open modal
+    hashHistory: Boolean // enable/disable hash in modal navigation
+    preserve: Boolean // preserves modals opened before the current
+    disableScroll: Boolean // adds a class to the html tag to disable scrolling
   })
 ```
 

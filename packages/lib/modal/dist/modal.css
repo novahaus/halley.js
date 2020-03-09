@@ -1,3 +1,12 @@
+html.no-scroll {
+  position: fixed;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
 .halley_modal {
   position: fixed;
   top: 0;
