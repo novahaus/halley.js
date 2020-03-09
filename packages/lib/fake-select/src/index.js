@@ -35,9 +35,14 @@ function makeDropdown(elm, opt) {
     label.classList.add(options.insertClasses.span);
   }
 
+  function setupFirst() {
+    label.innerHTML = select.options[0].innerHTML;
+  }
+
   function init() {
     setupListener();
     setupClasses();
+    setupFirst();
   }
 
   init();
