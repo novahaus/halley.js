@@ -8,6 +8,7 @@ const defaultOptions = {
   hashHistory: true,
   disableScroll: true,
   disableEvents: true,
+  activeClass: 'active',
 };
 
 function modal(elm, opts) {
@@ -44,11 +45,12 @@ function modal(elm, opts) {
 
   function open(event) {
     if (event && options.disableEvents) event.preventDefault();
+    scrollHeight = window.scrollY;
     ctx.setAttribute('aria-hidden', false);
     changeTabIndex(0);
-    ctx.classList.add('active');
+    ctx.classList.add(options.activeClass);
     modalCount.push(nameModal);
-    openButtons.forEach((btn) => btn.classList.add('active'));
+    openButtons.forEach((btn) => btn.classList.add(options.activeClass));
 
     if (options.disableScroll) document.documentElement.classList.add('no-scroll');
     if (options.onOpen) options.onOpen(ctx, event);
@@ -65,7 +67,7 @@ function modal(elm, opts) {
     if (event && options.disableEvents) event.preventDefault();
     ctx.setAttribute('aria-hidden', true);
     changeTabIndex(-1);
-    ctx.classList.remove('active');
+    ctx.classList.remove(options.activeClass);
     modalCount.pop();
 
     if (modalCount.length === 0) {
@@ -75,23 +77,23 @@ function modal(elm, opts) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
 
-    openButtons.forEach((btn) => btn.classList.remove('active'));
+    openButtons.forEach((btn) => btn.classList.remove(options.activeClass));
 
     if (options.onClose) options.onClose(ctx, event);
     if (!options.preserve) lastOpen = null;
+
+    setTimeout(() => {
+      window.scrollBy(0, scrollHeight);
+      scrollHeight = 0;
+    }, 1)
   }
 
   function toggleModal(event) {
     event.preventDefault();
 
-    if (ctx.classList.contains('active')) {
+    if (ctx.classList.contains(options.activeClass)) {
       close(event);
-      setTimeout(() => {
-        window.scrollBy(0, scrollHeight);
-        scrollHeight = 0;
-      }, 1)
     } else {
-      scrollHeight = window.scrollY;
       open(event);
     }
   }
@@ -104,7 +106,7 @@ function modal(elm, opts) {
 
   function setupListeners() {
     openButtons.forEach((btn) => btn.addEventListener('click', toggleModal));
-    closebutton.forEach((btn) => btn.addEventListener('click', close));
+    closebutton.forEach((btn) => btn.addEventListener('click', toggleModal));
   }
 
   function init() {

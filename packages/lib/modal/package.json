@@ -1,6 +1,6 @@
 {
   "name": "modal.js",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "",
   "main": "dist/index.min.js",
   "scripts": {
