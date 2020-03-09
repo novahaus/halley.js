@@ -1,6 +1,6 @@
 {
   "name": "halley.js",
-  "version": "0.12.5",
+  "version": "0.12.6",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley.js",
@@ -16,22 +16,8 @@
     "install-cp": "./bin/install.sh",
     "nc": "./bin/new-component.sh"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "line-staged": {
-    "packages/lib/**/*.js": [
-      "eslint --fix",
-      "git status"
-    ]
-  },
   "dependencies": {},
   "devDependencies": {
-    "husky": "^3.1.0",
-    "lerna": "^3.18.3",
-    "eslint": "^6.7.2",
-    "lint-staged": "^9.5.0"
+    "lerna": "^3.18.3"
   }
 }

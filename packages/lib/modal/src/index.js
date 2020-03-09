@@ -87,12 +87,12 @@ function modal(elm, opts) {
     if (ctx.classList.contains('active')) {
       close(event);
       setTimeout(() => {
-        window.scrollBy(0, scrollHeight)
+        window.scrollBy(0, scrollHeight);
         scrollHeight = 0;
       }, 1)
     } else {
-      open(event);
       scrollHeight = window.scrollY;
+      open(event);
     }
   }
 
