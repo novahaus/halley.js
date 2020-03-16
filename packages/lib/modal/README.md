@@ -67,7 +67,7 @@ The module needs an HTML structure to work.
 
 ```html
   <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
+    <div class="halley_modal_overlay" data-halley-modal-close></div>
 
     // Here you include your template
 
@@ -79,9 +79,9 @@ The module needs an HTML structure to work.
 Putting one or several buttons with the mark, in click the modal will be closed:
 ```html
   <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
+    <div class="halley_modal_overlay" data-halley-modal-close></div>
 
-      <button halley-modal-close>Close modal</button>
+      <button data-halley-modal-close>Close modal</button>
 
   </div>
 ```
@@ -89,9 +89,9 @@ Putting one or several buttons with the mark, in click the modal will be closed:
 #### Example
 ```html
   <div class="halley_modal" halley-modal id="my-modal">
-    <div class="halley_modal_overlay" halley-modal-close></div>
+    <div class="halley_modal_overlay" data-halley-modal-close></div>
     <div class="modal">
-      <button halley-modal-close>Close modal</button>
+      <button data-halley-modal-close>Close modal</button>
       <p>Hello modal</p>
     </div>
   </div>

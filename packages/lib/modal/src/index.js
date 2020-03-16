@@ -13,7 +13,7 @@ const defaultOptions = {
 function modal(elm, opts) {
   const ctx = elm;
   const nameModal = ctx.getAttribute('id');
-  const closebutton = Array.from(ctx.querySelectorAll('[halley-modal-close]'));
+  const closebutton = Array.from(ctx.querySelectorAll('[data-halley-modal-close]'));
   const openButtons = Array.from(document.querySelectorAll(`[href="#${nameModal}"]`));
   const focusableElements = Array.from(ctx.querySelectorAll(focusableElementsString));
   const options = Object.assign({}, defaultOptions, opts);
