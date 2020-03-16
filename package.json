@@ -1,6 +1,6 @@
 {
   "name": "halley.js",
-  "version": "0.12.7",
+  "version": "0.12.9",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley.js",
@@ -14,7 +14,13 @@
   "scripts": {
     "build": "./bin/build.sh",
     "install-cp": "./bin/install.sh",
-    "nc": "./bin/new-component.sh"
+    "nc": "./bin/new-component.sh",
+    "lint": "./bin/lint.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "dependencies": {},
   "devDependencies": {
