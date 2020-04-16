@@ -6,7 +6,7 @@ let lastOpen = null;
 
 const defaultOptions = {
   hashHistory: true,
-  disableScroll: true,
+  disableScroll: false,
   disableEvents: true,
   activeClass: 'active',
 };
@@ -72,7 +72,14 @@ function modal(elm, opts) {
 
     if (modalCount.length === 0) {
       window.location.hash = '';
-      if (options.disableScroll) document.documentElement.classList.remove('no-scroll');
+      if (options.disableScroll) {
+        document.documentElement.classList.remove('no-scroll');
+
+        setTimeout(() => {
+          window.scrollBy(0, scrollHeight);
+          scrollHeight = 0;
+        }, 1)
+      }
     } else if (options.hashHistory) {
       window.location.hash = `#${modalCount[modalCount.length - 1]}`;
     }
@@ -81,11 +88,6 @@ function modal(elm, opts) {
 
     if (options.onClose) options.onClose(ctx, event);
     if (!options.preserve) lastOpen = null;
-
-    setTimeout(() => {
-      window.scrollBy(0, scrollHeight);
-      scrollHeight = 0;
-    }, 1)
   }
 
   function toggleModal(event) {
