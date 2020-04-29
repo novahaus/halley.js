@@ -1,0 +1,103 @@
+import selector, { all } from '../../../utils/selector';
+
+const defaultOptions = {
+  offset: 0,
+  activeClass: '-active',
+};
+
+const getScrollPosition = () => (document.documentElement.scrollTop || document.body.scrollTop);
+
+function scrollSpy(elm, opt) {
+  const ctx = elm;
+  const options = Object.assign({}, defaultOptions, opt);
+  const data = Array.from(ctx.querySelectorAll('a'))
+  .map(link => ({
+    link,
+    section: document.querySelector(link.getAttribute('href')),
+  }));
+  let lastActive = data[0];
+  let scrollPosition = getScrollPosition();
+  let timer = null;
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-04-29 15:26:40
+   * @Desc: destroy the instance
+   */
+  function destroy() {
+    window.removeEventListener('scroll', onScroll);
+  }
+
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-04-29 15:19:33
+   * @Desc: checks which item should be activated and activates it
+   */
+  function checkToActivate() {
+    data.forEach(item => {
+      if (item.section.offsetTop <= (scrollPosition + options.offset)) {
+        lastActive.link.classList.remove(options.activeClass);
+        item.link.classList.add(options.activeClass);
+        lastActive = item;
+      }
+    })
+  }
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-04-29 15:20:30
+   * @Desc: callback on scroll page
+   */
+  function onScroll() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      scrollPosition = getScrollPosition();
+      checkToActivate();
+    }, 100)
+  }
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-04-29 15:20:48
+   * @Desc: start listener of page
+   */
+  function setupListener() {
+    window.addEventListener('scroll', onScroll);
+  }
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-04-29 15:21:26
+   * @Desc: starts scrollSpy
+   */
+  function init() {
+    setupListener();
+    checkToActivate();
+  }
+
+  init();
+
+  return {
+    ctx,
+    options,
+    destroy,
+    init,
+    getActive: () => lastActive,
+  }
+}
+
+export default (slc, opt) => {
+  const elm = selector(slc);
+  return scrollSpy(elm, opt);
+}
+
+export const init = (slc, opt) => {
+  const data = all(slc);
+  return data.map(elm => scrollSpy(elm, opt));
+}
