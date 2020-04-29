@@ -71,7 +71,7 @@ function modal(elm, opts) {
     modalCount.pop();
 
     if (modalCount.length === 0) {
-      window.location.hash = '';
+      window.location.hash = '# ';
       if (options.disableScroll) {
         document.documentElement.classList.remove('no-scroll');
 

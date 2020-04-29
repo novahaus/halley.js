@@ -57,7 +57,7 @@ else
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.1",
     "rollup-plugin-babel-minify": "^6.1.1",
-    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-eslint": "^7.0.0"
   }
 }
     ' > package.json
