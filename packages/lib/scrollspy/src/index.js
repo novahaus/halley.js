@@ -11,6 +11,7 @@ function scrollSpy(elm, opt) {
   const ctx = elm;
   const options = Object.assign({}, defaultOptions, opt);
   const data = Array.from(ctx.querySelectorAll('a'))
+  .filter(fill => /^#/.test(fill.getAttribute('href')))
   .map(link => ({
     link,
     section: document.querySelector(link.getAttribute('href')),

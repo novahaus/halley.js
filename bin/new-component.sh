@@ -13,7 +13,8 @@ then
   "description": "",
   "main": "dist/index.min.js",
   "scripts": {
-    "build": "./node_modules/.bin/rollup -c"
+    "build": "./node_modules/.bin/rollup -c",
+    "dev": "./node_modules/.bin/rollup -c -w"
   },
   "author": "'$2'",
   "license": "MIT",
@@ -30,7 +31,8 @@ then
     "rollup-plugin-babel-minify": "^6.1.1",
     "rollup-plugin-css-only": "^1.0.0",
     "rollup-plugin-eslint": "^7.0.0",
-    "rollup-plugin-stylus-compiler": "^1.0.1"
+    "rollup-plugin-stylus-compiler": "^1.0.1",
+    "rollup-watch": "^4.3.1"
   }
 }
     ' > package.json
@@ -57,7 +59,8 @@ else
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.1",
     "rollup-plugin-babel-minify": "^6.1.1",
-    "rollup-plugin-eslint": "^7.0.0"
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-watch": "^4.3.1"
   }
 }
     ' > package.json
