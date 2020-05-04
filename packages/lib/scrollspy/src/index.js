@@ -1,4 +1,4 @@
-import selector, { all } from '../../../utils/selector';
+import selector from '../../../utils/selector';
 
 const defaultOptions = {
   offset: 0,
@@ -11,14 +11,26 @@ function scrollSpy(elm, opt) {
   const ctx = elm;
   const options = Object.assign({}, defaultOptions, opt);
   const data = Array.from(ctx.querySelectorAll('a'))
-  .filter(fill => /^#/.test(fill.getAttribute('href')))
-  .map(link => ({
-    link,
-    section: document.querySelector(link.getAttribute('href')),
-  }));
+    .filter(fill => /^#/.test(fill.getAttribute('href')))
+    .map(link => ({
+      link,
+      section: document.querySelector(link.getAttribute('href')),
+    }));
   let lastActive = data[0];
   let scrollPosition = getScrollPosition();
   let timer = null;
+
+  /**
+   * javascript comment
+   * @Author: Leandro C. Silva
+   * @Date: 2020-05-04 17:19:10
+   * @Desc: activate item
+   */
+  function activateItem(item) {
+    lastActive.link.classList.remove(options.activeClass);
+    item.link.classList.add(options.activeClass);
+    lastActive = item;
+  }
 
   /**
    * javascript comment
@@ -40,9 +52,9 @@ function scrollSpy(elm, opt) {
   function checkToActivate() {
     data.forEach(item => {
       if (item.section.offsetTop <= (scrollPosition + options.offset)) {
-        lastActive.link.classList.remove(options.activeClass);
-        item.link.classList.add(options.activeClass);
-        lastActive = item;
+        activateItem(item);
+
+        if (options.callback) options.callback(item, data);
       }
     })
   }
@@ -96,9 +108,4 @@ function scrollSpy(elm, opt) {
 export default (slc, opt) => {
   const elm = selector(slc);
   return scrollSpy(elm, opt);
-}
-
-export const init = (slc, opt) => {
-  const data = all(slc);
-  return data.map(elm => scrollSpy(elm, opt));
-}
+};

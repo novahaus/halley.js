@@ -65,6 +65,8 @@ npm install halley.js
 - [accordion](packages/lib/accordion)
 - [accessibility](packages/lib/accessibility)
 - [hamburger](packages/lib/hamburger)
+- [subpub](packages/lib/subpub)
+- [scrollSpy](packages/lib/scrollSpy)
 
 ## See our projects
   Here is a list of our other projects.
