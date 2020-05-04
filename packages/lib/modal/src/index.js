@@ -22,6 +22,10 @@ function modal(elm, opts) {
   const tabStop = { first: focusableElements[0], last: focusableElements[focusableElements.length - 1] };
   let scrollHeight = 0;
 
+  function clearHash() {
+    window.location.hash = '#!';
+  }
+
   function changeTabIndex(i) {
     focusableElements.forEach((focus) => focus.setAttribute('tabindex', i));
   }
@@ -71,7 +75,7 @@ function modal(elm, opts) {
     modalCount.pop();
 
     if (modalCount.length === 0) {
-      window.location.hash = '# ';
+      clearHash();
       if (options.disableScroll) {
         document.documentElement.classList.remove('no-scroll');
 
