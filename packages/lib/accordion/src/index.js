@@ -56,6 +56,7 @@ function accordion(elm, opt) {
   function close(event, idx) {
     items[idx].content.style.maxHeight = 0;
     items[idx].holder.classList.remove(options.activeClass);
+    items[idx].button.classList.remove(options.activeClass);
     items[idx].isOpened = false;
     if (options.onClose) options.onClose.call(items[idx], event);
 
