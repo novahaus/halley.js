@@ -3,6 +3,7 @@ import selector, { all } from '../../../utils/selector';
 const defaultOptions = {
   toggleClick: true,
   activeClass: 'active',
+  listenerResize: true,
 }
 
 const makeStructure = arr => {
@@ -23,11 +24,27 @@ function accordion(elm, opt) {
   const options = Object.assign({}, defaultOptions, opt);
   const items = makeStructure(childs);
   let lastOpened = -1;
+  let timer = null;
+
+  function onScroll() {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      resizeListener();
+    }, 100)
+  }
+
+  function resizeListener() {
+    if (lastOpened >= 0) {
+      const { offsetHeight } = items[lastOpened].content.firstElementChild;
+      items[lastOpened].content.style.maxHeight = `${offsetHeight}px`;
+    }
+  }
 
   function open(event, idx) {
     const { offsetHeight } = items[idx].content.firstElementChild;
     items[idx].content.style.maxHeight = `${offsetHeight}px`;
     items[idx].holder.classList.add(options.activeClass);
+    items[idx].button.classList.add(options.activeClass);
 
     if (options.onOpen) options.onOpen.call(items[idx], event);
     if (lastOpened >= 0 && options.toggleClick) close(null, lastOpened);
@@ -50,7 +67,11 @@ function accordion(elm, opt) {
     else close(e, i);
   }
 
-  function setupListener() {
+  function setupListeners() {
+    if (options.listenerResize) {
+      window.addEventListener('resize', onScroll);
+    }
+
     items.forEach((item, index) =>
       item.button.addEventListener('click', (e) => toggle(e, index)));
   }
@@ -63,7 +84,7 @@ function accordion(elm, opt) {
   }
 
   function init() {
-    setupListener();
+    setupListeners();
     setupClasses();
   }
 
