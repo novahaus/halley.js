@@ -4,6 +4,7 @@ const pathRegex = /([^#])+#/g;
 const defaultOptions = {
   offset: 0,
   activeClass: '-active',
+  selector: 'a',
 };
 
 const getScrollPosition = () => (document.documentElement.scrollTop || document.body.scrollTop);
@@ -11,18 +12,15 @@ const getScrollPosition = () => (document.documentElement.scrollTop || document.
 function scrollSpy(elm, opt) {
   const ctx = elm;
   const options = Object.assign({}, defaultOptions, opt);
-  const data = Array.from(ctx.querySelectorAll('a'))
+  const data = Array.from(ctx.querySelectorAll(options.selector))
     .map(link => ({
       link,
-      section: document.querySelector(link.getAttribute('href').replace(pathRegex, '#')),
+      section: document.querySelector(link.getAttribute('href').replace(pathRegex, '#')) || null,
     }))
     .filter(item => item.section);
   let lastActive = data[0];
   let scrollPosition = getScrollPosition();
   let timer = null;
-
-  console.log(data);
-
 
   /**
    * javascript comment
@@ -31,7 +29,6 @@ function scrollSpy(elm, opt) {
    * @Desc: activate item
    */
   function activateItem(item) {
-    console.log(item);
     lastActive.link.classList.remove(options.activeClass);
     item.link.classList.add(options.activeClass);
     lastActive = item;
