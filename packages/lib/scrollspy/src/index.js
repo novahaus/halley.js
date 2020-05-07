@@ -12,7 +12,6 @@ function scrollSpy(elm, opt) {
   const ctx = elm;
   const options = Object.assign({}, defaultOptions, opt);
   const data = Array.from(ctx.querySelectorAll('a'))
-    .filter(fill => /^#/.test(fill.getAttribute('href')))
     .map(link => ({
       link,
       section: document.querySelector(link.getAttribute('href').replace(pathRegex, '#')),
@@ -22,6 +21,9 @@ function scrollSpy(elm, opt) {
   let scrollPosition = getScrollPosition();
   let timer = null;
 
+  console.log(data);
+
+
   /**
    * javascript comment
    * @Author: Leandro C. Silva
@@ -29,6 +31,7 @@ function scrollSpy(elm, opt) {
    * @Desc: activate item
    */
   function activateItem(item) {
+    console.log(item);
     lastActive.link.classList.remove(options.activeClass);
     item.link.classList.add(options.activeClass);
     lastActive = item;
@@ -55,7 +58,6 @@ function scrollSpy(elm, opt) {
     data.forEach(item => {
       if (item.section.offsetTop <= (scrollPosition + options.offset)) {
         activateItem(item);
-
         if (options.callback) options.callback(item, data);
       }
     })
