@@ -1,6 +1,6 @@
 {
   "name": "halley.js",
-  "version": "0.13.15",
+  "version": "0.13.16",
   "description": "A widget and utils library",
   "main": "dist/index.min.js",
   "repository": "https://github.com/novahaus/halley.js",

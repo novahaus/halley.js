@@ -30,8 +30,12 @@ function modal(elm, opts) {
     focusableElements.forEach((focus) => focus.setAttribute('tabindex', i));
   }
 
+  function removeTabFocus() {
+    window.removeEventListener('keydown', trapTabKey);
+  }
+
   function setupTabFocus() {
-    ctx.addEventListener('keydown', trapTabKey);
+    window.addEventListener('keydown', trapTabKey);
   }
 
   function trapTabKey(event) {
@@ -71,6 +75,7 @@ function modal(elm, opts) {
     if (event && options.disableEvents) event.preventDefault();
     ctx.setAttribute('aria-hidden', true);
     changeTabIndex(-1);
+    removeTabFocus();
     ctx.classList.remove(options.activeClass);
     modalCount.pop();
 
