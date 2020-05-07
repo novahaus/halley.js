@@ -1,5 +1,6 @@
 import selector from '../../../utils/selector';
 
+const pathRegex = /([^#])+#/g;
 const defaultOptions = {
   offset: 0,
   activeClass: '-active',
@@ -14,8 +15,9 @@ function scrollSpy(elm, opt) {
     .filter(fill => /^#/.test(fill.getAttribute('href')))
     .map(link => ({
       link,
-      section: document.querySelector(link.getAttribute('href')),
-    }));
+      section: document.querySelector(link.getAttribute('href').replace(pathRegex, '#')),
+    }))
+    .filter(item => item.section);
   let lastActive = data[0];
   let scrollPosition = getScrollPosition();
   let timer = null;
