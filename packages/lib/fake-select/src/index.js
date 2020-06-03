@@ -17,12 +17,26 @@ function makeDropdown(elm, opt) {
   const options = opt;
   const select = ctx.querySelector(options.selectors.select);
   const label = ctx.querySelector(options.selectors.span);
+  const parentForm = ctx.closest('form');
 
+  function changeInner() {
+    label.innerHTML = select.options[select.selectedIndex].innerHTML;
+  }
+
+  function onChange() {
+    changeInner();
+  }
+
+  function onReset() {
+    setupFirst();
+  }
 
   function setupListener() {
-    select.addEventListener('change', () => {
-      label.innerHTML = select.options[select.selectedIndex].innerHTML;
-    });
+    if (parentForm) {
+      parentForm.addEventListener('reset', onReset);
+    }
+
+    select.addEventListener('change', onChange);
   }
 
   function emitEvent() {
