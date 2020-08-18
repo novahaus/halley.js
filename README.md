@@ -31,12 +31,12 @@
   <h4>
     <a href="https://novahaus.com.br" target="_blank">Website</a> |
     <a href="#installing">Install</a> |
-    <a href="#components">Components</a>
+    <a href="#Components">Components</a>
   </h4>
 </div>
 
 <div align="center">
-  <sub>Built with ❤︎ by
+  <sub>Built with &nbsp; ❤︎ &nbsp; by
   <a href="https://novahaus.com.br">NovaHaus</a> and
   <a href="https://github.com/novahaus/halley.js/graphs/contributors">contributors </a>
 </div>
@@ -45,6 +45,7 @@
 <div>
   <p>
     Halley is a Javascript library components that facilitate web development, with easy-to-use, fairly free modules for the purpose of being minimalist.
+    Remembering that this project aims to help our Front-End community and also to improve the capacity of the participants, if you found any bug or improvement that you can do, contact us !!!<br />
   </p>
 </div>
 
@@ -52,14 +53,17 @@
 Using NPM, install Halley, and save it to your package.json dependencies.
 ### [npm](https://www.npmjs.com/package/halley.js)
 ```zsh
-npm install halley.js
+npm i halley.js
 ```
-
+<br />
 
 ## Components
-- [modal](packages/lib/modal)<br />
-- [dropdown](packages/lib/dropdown)<br />
-- [webp-detector](packages/lib/webp-detector)<br />
+
+### Vanilla
+
+- [modal](packages/lib/modal)
+- [dropdown](packages/lib/dropdown)
+- [webp-detector](packages/lib/webp-detector)
 - [fake-select](packages/lib/fake-select)
 - [media-manager](packages/lib/media-manager)
 - [accordion](packages/lib/accordion)
@@ -68,11 +72,19 @@ npm install halley.js
 - [subpub](packages/lib/subpub)
 - [scrollSpy](packages/lib/scrollspy)
 
+### Vue
+
+- [modal](packages/vue/modal)
+
+<br />
+
 ## See our projects
   Here is a list of our other projects.
 
   - [css-guideline](https://github.com/novahaus/css-guideline)
   - [email-dev-best-practices](https://github.com/novahaus/css-guideline)
+
+<br />
 
 ## Team
 

@@ -1,0 +1,39 @@
+{
+  "name": "modal.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c",
+    "dev": "./node_modules/.bin/rollup -c -w"
+  },
+  "author": "Leandro",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-external-helpers": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@vue/compiler-sfc": "^3.0.0-rc.5",
+    "cross-origin": "^1.0.6",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^2.23.1",
+    "rollup-plugin-babel": "^4.0.1",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-stylus-compiler": "^1.0.1",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "rollup-plugin-vue2": "^0.8.1",
+    "rollup-watch": "^4.3.1",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
