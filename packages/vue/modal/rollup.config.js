@@ -32,7 +32,10 @@ export default [
         css: true,
         compileTemplate: true,
       }),
-      babel(),
+      babel({
+        runtimeHelpers: true,
+        extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
+      }),
       eslint(),
       minify(minifyConfig),
     ]
