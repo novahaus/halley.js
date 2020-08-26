@@ -102,6 +102,7 @@ export default {
       return {
         name: this.name,
         ref: this.$refs.modal || null,
+        ...this.params,
         ...properties
       }
     },

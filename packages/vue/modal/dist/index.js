@@ -170,10 +170,10 @@
       },
       createModalEvent: function createModalEvent() {
         var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        return _objectSpread2({
+        return _objectSpread2(_objectSpread2({
           name: this.name,
           ref: this.$refs.modal || null
-        }, properties);
+        }, this.params), properties);
       }
     }
   };
